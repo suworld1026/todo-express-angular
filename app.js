@@ -1,12 +1,18 @@
 'use strict';
 
-let express = require('express'),
-    consign = require('consign'),
-    morgan  = require('morgan'),
-    app     = express();
+let express    = require('express'),
+    consign    = require('consign'),
+    morgan     = require('morgan'),
+    bodyParser = require('body-parser'),
+    app        = express();
 
 /* Express configuration */
 app.use(morgan('tiny'));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json())
 
 
 /* Autoload MVC structure */

@@ -9,6 +9,7 @@
   "author": "Fabio Teixeira <fabio1079@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "consign": "^0.1.2",
     "express": "^4.13.4",
     "morgan": "^1.7.0"
