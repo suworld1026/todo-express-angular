@@ -6,6 +6,11 @@ module.exports = function(app) {
   let HomeController = {
     index: function(req, res) {
       res.sendFile(path.join(__dirname, '../public/html', 'index.html'));
+    },
+
+
+    testJson: function(req, res) {
+      res.send({message: 'Hello World'});
     }
   };
 
