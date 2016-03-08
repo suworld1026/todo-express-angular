@@ -1,0 +1,15 @@
+{
+  "name": "todo-express-angular",
+  "version": "0.0.1",
+  "description": "A basic express angularjs todo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fabio Teixeira <fabio1079@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "consign": "^0.1.2",
+    "express": "^4.13.4"
+  }
+}
