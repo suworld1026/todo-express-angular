@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='todo'>
 <head>
   <meta charset="UTF-8">
   <title></title>
+
+  <link href="css/bootstrap.css" rel="stylesheet" />
+
+  <script src='js/angular.js'></script>
+  <script src='js/app.js'></script>
 </head>
 <body>
-  <h1>Hello Word !</h1>
+  <h1 ng-controller='HomeController'>{{message}}</h1>
 </body>
 </html>
