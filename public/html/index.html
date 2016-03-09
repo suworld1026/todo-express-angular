@@ -4,12 +4,37 @@
   <meta charset="UTF-8">
   <title></title>
 
-  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
 
   <script src='js/angular.js'></script>
   <script src='js/app.js'></script>
 </head>
 <body>
-  <h1 ng-controller='HomeController'>{{message}}</h1>
+  <div id='main-container' class='container-fluid'>
+    <div class="row">
+      <div class="col-xs-12 col-md-12 col-lg-12">
+        <form>
+          <div class="col-xs-11 col-md-11 col-lg-11">
+            <input type="text" class='form-control' placeholder='Input your todo here'>
+          </div>
+
+          <div class="col-xs-1 col-md-1 col-lg-1">
+            <button class='btn btn-success'>Add</button>
+          </div>
+        </form>
+      </div>
+
+      <div id='todo-list-container' class="col-xs-12 col-md-12 col-lg-12">
+        <ul class="list-group">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Morbi leo risus</li>
+          <li class="list-group-item">Porta ac consectetur ac</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
