@@ -24,9 +24,12 @@ consign()
 
 
 /* Run development server */
-app.listen(3000, () => {
-  console.log('Running on: http://127.0.0.1:3000');
-});
+if (process.argv.indexOf('-s') !== -1) {
+  app.listen(3000, () => {
+    console.log('\n\tRunning on: http://127.0.0.1:3000\n\n');
+  });
+}
+
 
 exports.app = app;
 

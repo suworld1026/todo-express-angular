@@ -4,7 +4,8 @@
   "description": "A basic express angularjs todo",
   "main": "app.js",
   "scripts": {
-    "tests": "./node_modules/.bin/mocha tests/**"
+    "tests": "./node_modules/.bin/mocha tests/**",
+    "server": "node app.js -s"
   },
   "author": "Fabio Teixeira <fabio1079@gmail.com>",
   "license": "ISC",
