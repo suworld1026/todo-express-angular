@@ -18,7 +18,14 @@ app.use(bodyParser.json())
 app.use(express.static(__dirname + '/public'));
 
 /* Database connection */
-mongoose.connect('mongodb://localhost/myapp');
+if (process.env.NODE_ENV === 'development') {
+  mongoose.connect('mongodb://localhost/todos_development');
+} else if (process.env.NODE_ENV === 'test') {
+  mongoose.connect('mongodb://localhost/todos_test');
+} else {
+  // Do nothing
+}
+
 app.mongoose = mongoose;
 
 /* Autoload MVC structure */
