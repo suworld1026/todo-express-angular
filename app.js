@@ -5,6 +5,7 @@ let express    = require('express'),
     morgan     = require('morgan'),
     bodyParser = require('body-parser'),
     mongoose   = require('mongoose'),
+    session    = require('express-session'),
     app        = express();
 
 /* Express configuration */
@@ -16,6 +17,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
 app.use(express.static(__dirname + '/public'));
+
+// Session Storage
+app.use(session({
+  secret:'batman for president !',
+  cookie: {maxAge: 3600000 }, // 2 hours in milliseconds
+  resave: true,
+  saveUninitialized: true
+}));
 
 /* Database connection */
 if (process.env.NODE_ENV === 'development') {
