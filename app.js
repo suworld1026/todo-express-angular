@@ -4,6 +4,7 @@ let express    = require('express'),
     consign    = require('consign'),
     morgan     = require('morgan'),
     bodyParser = require('body-parser'),
+    mongoose   = require('mongoose'),
     app        = express();
 
 /* Express configuration */
@@ -16,9 +17,14 @@ app.use(bodyParser.json())
 
 app.use(express.static(__dirname + '/public'));
 
+/* Database connection */
+mongoose.connect('mongodb://localhost/myapp');
+app.mongoose = mongoose;
+
 /* Autoload MVC structure */
 consign()
-  .include('controllers')
+  .include('models')
+  .then('controllers')
   .then('routes')
   .into(app);
 
