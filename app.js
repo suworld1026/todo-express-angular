@@ -34,7 +34,10 @@ app.use(validator());
 if (process.env.NODE_ENV === 'development') {
   mongoose.connect('mongodb://localhost/todos_development');
 } else if (process.env.NODE_ENV === 'test') {
-  mongoose.connect('mongodb://localhost/todos_test');
+  mongoose.connect('mongodb://localhost/todos_test', () => {
+    // Clear database for tests
+    mongoose.connection.db.dropDatabase();
+  });
 } else {
   // Do nothing
 }
