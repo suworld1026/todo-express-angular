@@ -6,6 +6,7 @@ let express    = require('express'),
     bodyParser = require('body-parser'),
     mongoose   = require('mongoose'),
     session    = require('express-session'),
+    validator  = require('express-validator'),
     app        = express();
 
 /* Express configuration */
@@ -25,6 +26,9 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+
+// Express validator for crossssite scripting
+app.use(validator());
 
 /* Database connection */
 if (process.env.NODE_ENV === 'development') {

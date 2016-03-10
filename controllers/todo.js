@@ -12,11 +12,14 @@ module.exports = function(app) {
           error: true,
           message: err.errors.text.message
         });
-      });      
+      });
     },
 
 
     create: function(req, res) {
+      req.sanitize('text').escape();
+      req.sanitize('done').escape();
+
       let text = req.body.text;
       let done = req.body.done;
 
@@ -31,7 +34,7 @@ module.exports = function(app) {
         console.error(err);
         res.send(err);
       });
-    }    
+    }
   };
 
   return TodoController;
