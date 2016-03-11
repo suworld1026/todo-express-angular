@@ -18,23 +18,32 @@ module.exports = function(app) {
 
     create: function(req, res) {
       req.sanitize('text').escape();
-      req.sanitize('done').escape();
 
       let text = req.body.text;
       let done = req.body.done;
 
       let todo = new Todo({
-        text: text,
-        done: done
+        text: text
       });
 
       todo.save().then((data) => {
         res.send(data);
       }).catch((err) => {
-        console.error(err);
         res.send(err);
       });
-    }
+    },
+
+
+    show: function(req, res) {
+      req.sanitize('id').escape();
+      let id = req.body.id;
+
+      Todo.findOne({_id: { $in: [id]}}).then((data) => {
+        res.send(data);
+      }).catch((err) => {
+        res.send(err);
+      });
+    },
   };
 
   return TodoController;
