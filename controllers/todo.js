@@ -65,6 +65,18 @@ module.exports = function(app) {
       }).catch((err) => {
         res.send(err);
       });
+    },
+
+
+    destroy: function(req, res) {
+      req.sanitize('id').escape();
+      let id = req.body.id;
+
+      Todo.remove({_id: id}).then((data) => {
+        res.send(data.result);
+      }).catch((err) => {
+        res.send(err);
+      });
     }
   };
 

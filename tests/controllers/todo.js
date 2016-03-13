@@ -94,5 +94,22 @@ describe('TodoController actions', () => {
       });
     });
   });
+
+
+  it('DELETE /todos -> should delete a todo', (done) => {
+    let todo = new Todo({
+      text: 'delete-me',
+      done: false
+    });
+
+    todo.save().then((data) => {
+      request.delete('/todos').send({id: data._id}).expect(200).end((err, res) => {
+        should.not.exist(err);
+        res.body.ok.should.be.equal(1);
+        res.body.n.should.be.equal(1);
+        done();
+      });
+    });
+  });
 });
 
