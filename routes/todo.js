@@ -6,5 +6,6 @@ module.exports = function(app) {
   app.get('/todos', TodoController.index);
   app.post('/todos', TodoController.create);
   app.get('/todos/:id', TodoController.show);
+  app.put('/todos', TodoController.update);
 }
 

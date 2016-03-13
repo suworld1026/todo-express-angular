@@ -72,5 +72,27 @@ describe('TodoController actions', () => {
       done();
     });
   });
+
+
+  it('PUT /todos -> should update a todo', (done) => {
+    let todo = new Todo({
+      text: 'Hello update',
+      done: false
+    });
+
+    todo.save().then((data) => {
+      request.put('/todos').send({
+        id: data._id,
+        text: 'updated !',
+        done: true
+      }).expect(200).end((err, res) => {
+        should.not.exist(err);
+        res.body._id.should.be.equal(data._id.toString());
+        res.body.text.should.be.equal('updated !');
+        res.body.done.should.be.equal(true);
+        done();
+      });
+    });
+  });
 });
 

@@ -44,6 +44,28 @@ module.exports = function(app) {
         res.send(err);
       });
     },
+
+
+    update: function(req, res) {
+      req.sanitize('id').escape();
+      req.sanitize('text').escape();
+      req.sanitize('done').escape();
+
+      let id = req.body.id;
+
+      Todo.findOne({_id: {$in: [id]}}).then((todo) => {
+        todo.text = req.body.text;
+        todo.done = req.body.done;
+
+        todo.save().then((data) => {
+          res.send(data);
+        }).catch((err) => {
+          res.send(err);
+        });
+      }).catch((err) => {
+        res.send(err);
+      });
+    }
   };
 
   return TodoController;
